@@ -1,24 +1,18 @@
 
-// TIP: Use Proxy() to set default values for missing
-// ENV variables!
+// TIP: Pass functions into `styled` for props
+// based styling in CSS-in-JS!
+import React from 'react';
+import styled, { css } from 'styled-components';
 
-// Oh no! Someone forgot to put in their database URL!
-process.env = {
-  DB_USERNAME: 'MrBenJ',
-  DB_PASSWORD: '********************'
-};
-
-const envs = new Proxy(process.env, {
-  get(env, prop) {
-    // No problem! Return the default DB url here!
-    if(!env[prop] && prop === 'DB_URL') {
-      return 'default.db.dev.com:3303';
-    }
-    return env[prop];
-  }
-});
-console.log(envs.DB_URL);
-// => 'default.db.dev.com:3303'
+const PrettyParagraph = styled.p(
+  props => 
+    css`
+      background-color: ${props.bgColor};
+      color: ${props.color};
+      width: 100%;
+      font-size: ${props.typography.size};
+    `
+);
 
 
 
