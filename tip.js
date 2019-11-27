@@ -1,17 +1,24 @@
 
+// TIP: Use Proxy() to set default values for missing
+// ENV variables!
 
-// TIP: Validate Required ENV variables with Proxy!
+// Oh no! Someone forgot to put in their database URL!
+process.env = {
+  DB_USERNAME: 'MrBenJ',
+  DB_PASSWORD: '********************'
+};
 
-// Throw some handy errors to STDOUT if you miss one!
 const envs = new Proxy(process.env, {
   get(env, prop) {
-    if (!env[prop]) {
-      throw new Error(`ENV Variable ${prop} is missing`);
+    // No problem! Return the default DB url here!
+    if(!env[prop] && prop === 'DB_URL') {
+      return 'default.db.dev.com:3303';
     }
     return env[prop];
   }
 });
+console.log(envs.DB_URL);
+// => 'default.db.dev.com:3303'
 
-console.log(envs.MY_MISSING_VALUE); // => throws an error
 
 
