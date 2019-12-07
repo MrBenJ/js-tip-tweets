@@ -1,31 +1,29 @@
 
-// TIP: Use optional chaining
-// to safely access properties
-// that might not exist!
 
-const user = {
-  name: "Alex",
-  favorites: {
-    foods: {
-      protein: "steak",
-      carb: "bread"
-    },
-    drinks: {
-      soda: "Coca cola"
+// TIP: Use switch(true) to evaluate
+// multiple arguments in a a case 
+// expression
+
+function getEligibility(user) {
+  const permissions = [];
+  switch(true) {
+    case (user.age >= 18 && user.registered): {
+      permissions.push('core-access');
     }
-  },
-  occupation: "Developer"
-};
 
-console.log(user.favorites?.foods?.protein); 
-// => 'steak'
+    case (user.age < 18 && user.hasParentalConsent): {
+      permissions.push('child-permissions');
+    }
 
-console.log(user.favorites?.foods?.veggies?.leafy);
-// => null
+    case (user.admin && user.email.endsWith('myservice.com')): {
+      permissions.push('admin');
+    }
 
-console.log(user?.skills?.forEach(x => console.log(x));
-// => null
+    case (user.admin && user.email === 'admin@myservice.com'): {
+      permissions.push('superadmin');
+    }
+  }
 
-
-
+  return permissions;
+}
 
