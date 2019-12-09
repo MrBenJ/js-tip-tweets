@@ -3,17 +3,17 @@
 // as a default param to require 
 // arguments in your  function calls!
 
-const required = () => { 
-  throw new Error('Missing param in myFunction()!');
-}
+// Taken from @housecor
+// https://twitter.com/housecor/status/1200554167644966912
 
-const myFunction = (user = required()) {
-  // your code in here
-}
+// TIL you can prefetch lazy loaded React components.🔥
 
-myFunction(); // Throws an error!
-myFunction(null); // This is OK, since null !== undefined
-myFunction(undefined); // Throws an error!
-myFunction('Barnaby Jonez');
+// create-react-app honors Webpack directives: https://webpack.js.org/guides/code-splitting/#prefetchingpreloading-modules
 
+// So, to lazy load a component, but prefetch it behind the scenes:
 
+const Hi = React.lazy(() =>
+  import(/* webpackPrefetch: true */ "./Hi")
+);
+
+// More webpack info: https://webpack.js.org/guides/code-splitting/#prefetchingpreloading-modules
