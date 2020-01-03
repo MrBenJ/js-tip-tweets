@@ -1,0 +1,20 @@
+{
+  "name": "js-tip-tweets",
+  "version": "1.0.0",
+  "description": "JS-TIPZ",
+  "main": "moveTip.js",
+  "scripts": {
+    "move": "node moveTip.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrBenJ/js-tip-tweets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrBenJ/js-tip-tweets/issues"
+  },
+  "homepage": "https://github.com/MrBenJ/js-tip-tweets#readme"
+}
