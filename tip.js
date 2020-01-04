@@ -1,13 +1,19 @@
 
-// TIP: Need to prompt the user to save
-// their work before exiting the page?
-// Use the 'beforeunload' event!
+// TIP: Strip out falsy values from
+// an array with Array.filter(Boolean)
 
-window.addEventListener('beforeunload', () => {
-  alert('Hey! You should save your work!');
-  // other goody stuff here
-});
+const array = [
+  'I have',
+  '',
+  0,
+  null,
+  'clean',
+  'data',
+  undefined,
+  NaN
+];
 
-
+const clean = array.filter(Boolean);
+console.log(clean); // => ['I have', 'clean', 'data']
 
 
